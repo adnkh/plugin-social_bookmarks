@@ -26,7 +26,7 @@ Plugin update URI: social-bookmarks
         $content .= '<div class="clear"></div>' ;
         $content .= '</div>';
         // pinterest
-        $content .= '<script type="text/javascript" >$(document).ready(function() {var media = $("img[src*=\"oc-content/uploads/\"]").attr("src"); if(media==undefined) { media = ""; $(".pinterest").remove(); } else { media = "&media="+escape(media); };$(".pinterest").find("a").attr("href","http://pinterest.com/pin/create/button/?url="+escape(document.URL)+"&description="+escape(document.title)+media);});</script>';
+        $content .= '<script type="text/javascript" >$(document).ready(function() {var media = $("img[src*=\"oc-content/uploads/\"]").attr("src"); if(media==undefined) { media = ""; $(".pinterest").remove(); } else { media = "&media="+escape(media); };$(".pinterest").find("a").attr("href","http://pinterest.com/pin/create/button/?url="+escape(document.URL)+"&description="+escape(document.title)+media);div1 = $(".social-bookmarks"); div2 = $(".meta_list"); tdiv1 = div1.clone(); tdiv2 = div2.clone(); if(!div2.is(":empty")){div1.replaceWith(tdiv2);div2.replaceWith(tdiv1);}});</script>';
         
         return $content ;
     }
@@ -34,7 +34,7 @@ Plugin update URI: social-bookmarks
     function social_bookmarks_header( ) {
         $location   = Rewrite::newInstance()->get_location() ;
         $section    = Rewrite::newInstance()->get_section() ;
-        
+
         if($location == 'item' && $section == '') {
             echo '
             <style type="text/css">
